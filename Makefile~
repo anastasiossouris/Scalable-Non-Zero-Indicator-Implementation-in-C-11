@@ -1,0 +1,15 @@
+CC=g++
+CFLAGS= -c -std=c++11 -Wl,--no-as-needed -Wall -Wextra -g -O3
+LIBS= -lpthread -latomic
+
+
+all: snzi
+
+snzi : snzi_perf_eval.o
+	$(CC) -o perf_with_cas delayed_fel_perf-with-cas.o $(LDFLAGS) $(LIBS)
+
+snzi_perf_eval.o: snzi_perf_eval.cpp
+	$(CC) $(CFLAGS) snzi_perf_eval.cpp
+
+clean: 
+	rm -rf *.o snzi

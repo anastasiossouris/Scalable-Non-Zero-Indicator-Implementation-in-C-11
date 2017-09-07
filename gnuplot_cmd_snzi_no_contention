@@ -1,0 +1,11 @@
+set logscale y
+set title "SNZI-No-Contention Visit Throughput (per thread)"
+set xlabel "Number of Threads"
+set ylabel "Visit Throughput (visits/ms)"
+
+plot "snzi-no-contention.dat" using 1:2 with linespoints title "(K,H)=(2,0)","snzi-no-contention.dat" using 1:3 with linespoints title "(K,H)=(2,1)","snzi-no-contention.dat" using 1:4 with linespoints title "(K,H)=(2,2)", \
+	"snzi-no-contention.dat" using 1:5 with linespoints title "(K,H)=(4,1)"
+
+set terminal png
+set output "snzi-no-contention-graph"
+replot

@@ -1,0 +1,15 @@
+CC=g++
+CFLAGS= -c -std=c++11 -Wl,--no-as-needed -Wall -Wextra -g -O3
+LIBS= -lpthread -latomic
+
+
+all: snzi_semi
+
+snzi_semi : snzi_perf_eval_semi_contention.o
+	$(CC) -o snzi_semi snzi_perf_eval_semi_contention.o $(LIBS)
+
+snzi_perf_eval_semi_contention.o: snzi_perf_eval_semi_contention.cpp
+	$(CC) $(CFLAGS) snzi_perf_eval_semi_contention.cpp
+
+clean: 
+	rm -rf *semi_contention.o snzi_semi
